@@ -5,7 +5,8 @@ NarNum <- readline(prompt = "Enter a three digit positive number: ")
 
 if (is.numeric(as.numeric(NarNum)) & #checks if answer is numeric
     (as.numeric(NarNum)) %% 1 == 0 & #checks if answer is an integer
-    nchar(NarNum) == 3 & #checks if answer is within the 100-999 range
+    nchar(NarNum) == 3 & #checks if answer is three digits
+    !(as.numeric(NarNum) %in% 001:099) & #checks to make sure answer is within the 100-999 range by ensuring it doesn't start with a zero
     as.numeric(NarNum) > 0) { #checks if the answer is a positive number
   NarNum <- as.integer(NarNum) #Converts answer into numeric (rather than character)
   if (((NarNum %/% 100)^3) + (((NarNum %% 100) %/% 10)^3) + ((NarNum %% 10)^3) == NarNum) { #formula for identifying an Armstrong number
